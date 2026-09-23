@@ -16,7 +16,7 @@
             <div class="hero-actions">
                 <a href="{% url 'catalogo' %}" class="btn btn-primary">Explorar catálogo</a>
                 {% if data_negocio and data_negocio.telefono %}
-                    <a href="https://wa.me/{{ data_negocio.telefono }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+                    <a href="https://wa.me/{{ data_negocio.telefono }}" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
                 {% endif %}
             </div>
             <div class="hero-proof" aria-label="Experiencia FIREMED">
@@ -32,6 +32,21 @@
                 <span class="status-dot"></span>
                 Equipos disponibles en catálogo
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="section about-section" id="nosotros" aria-labelledby="about-heading">
+    <div class="container about-grid">
+        <div class="about-copy">
+            <span class="eyebrow">FIREMED</span>
+            <h2 id="about-heading">Quiénes somos</h2>
+            <p>
+                Somos una empresa que provee equipos para brigadas de rescate y emergencias con más de 15 años en el mercado, trabajando tanto con empresas públicas como privadas. Contamos con certificación ISO 9001, representamos a las mejores marcas del mercado, y nos aseguramos de brindar un servicio de la más alta calidad a todos nuestros clientes en todo momento.
+            </p>
+        </div>
+        <div class="about-media">
+            <img src="{% static 'img/firemed-nosotros.jpeg' %}" alt="Equipo FIREMED en una feria de equipamiento para rescate y emergencias" width="1280" height="960" loading="lazy">
         </div>
     </div>
 </section>
@@ -99,43 +114,6 @@
                     <p>No hay productos disponibles para mostrar.</p>
                 </div>
             {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="section trust-section" id="nosotros">
-    <div class="container trust-grid">
-        <div class="trust-copy">
-            <span class="eyebrow">FIREMED</span>
-            <h2>Experiencia que acompaña decisiones de compra críticas.</h2>
-            <p>
-                Durante más de 15 años hemos trabajado con empresas privadas y entidades públicas
-                que necesitan equipamiento confiable para seguridad, rescate y respuesta ante emergencias.
-            </p>
-            <p>
-                Representamos importantes marcas del mercado y contamos con experiencia atendiendo
-                organizaciones como el Cuerpo de Bomberos del Perú.
-            </p>
-            <a href="{% url 'catalogo' %}" class="btn btn-primary">Conocer nuestro catálogo</a>
-        </div>
-
-        <div class="trust-stats">
-            <div class="trust-stat">
-                <strong>+15</strong>
-                <span>Años de experiencia</span>
-            </div>
-            <div class="trust-stat">
-                <strong>Marcas</strong>
-                <span>Reconocidas en el mercado</span>
-            </div>
-            <div class="trust-stat">
-                <strong>Público + privado</strong>
-                <span>Experiencia comercial</span>
-            </div>
-            <div class="trust-stat">
-                <strong>Bomberos</strong>
-                <span>Experiencia con Cuerpo de Bomberos del Perú</span>
-            </div>
         </div>
     </div>
 </section>
