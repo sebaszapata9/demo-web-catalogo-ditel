@@ -7,6 +7,7 @@
     <meta name="description" content="Distribuidor de equipos de telecomunicación en Perú.">
     <title>{% block title %} DITEL | Distribuidor de equipos de telecomunicación en Perú{% endblock %}</title>
 
+    <link rel="preload" href="{% static 'fonts/manrope-variable.woff2' %}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
@@ -26,11 +27,12 @@
             </a>
 
             <nav class="main-nav" aria-label="Navegación principal">
-                <a href="{% url 'catalogo' %}" class="nav-link {% if request.resolver_match.url_name == 'catalogo' or request.resolver_match.url_name == 'detalle_item' %}is-active{% endif %}">
+                <a href="{% url 'catalogo' %}" class="nav-link {% if request.resolver_match.url_name == 'catalogo' or request.resolver_match.url_name == 'detalle_item' %}is-active{% endif %}" {% if request.resolver_match.url_name == 'catalogo' %}aria-current="page"{% endif %}>
                     Catálogo
                 </a>
                 <a href="{% url 'landing' %}#categorias" class="nav-link">Categorías</a>
                 <a href="{% url 'landing' %}#nosotros" class="nav-link">Nosotros</a>
+                <a href="{% url 'landing' %}#contacto" class="nav-link">Contacto</a>
             </nav>
 
             <div class="header-actions">
@@ -53,6 +55,7 @@
             <a href="{% url 'catalogo' %}">Catálogo</a>
             <a href="{% url 'landing' %}#categorias">Categorías</a>
             <a href="{% url 'landing' %}#nosotros">Nosotros</a>
+            <a href="{% url 'landing' %}#contacto">Contacto</a>
             {% if data_negocio and data_negocio.telefono %}
                 <a href="https://wa.me/{{ data_negocio.telefono }}" target="_blank" rel="noopener noreferrer" class="mobile-nav-whatsapp">Consultar por WhatsApp</a>
             {% endif %}
@@ -81,6 +84,7 @@
                     <a href="{% url 'catalogo' %}">Catálogo</a>
                     <a href="{% url 'landing' %}#categorias">Categorías</a>
                     <a href="{% url 'landing' %}#nosotros">Nosotros</a>
+                    <a href="{% url 'landing' %}#contacto">Contacto</a>
                 </div>
 
                 <div class="footer-column">
@@ -112,31 +116,7 @@
         </a>
     {% endif %}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.mobile-nav');
-
-            if (!toggle || !menu) return;
-
-            toggle.addEventListener('click', function () {
-                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', String(!isOpen));
-                toggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
-                menu.hidden = isOpen;
-                document.body.classList.toggle('menu-open', !isOpen);
-            });
-
-            menu.querySelectorAll('a').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    toggle.setAttribute('aria-expanded', 'false');
-                    toggle.setAttribute('aria-label', 'Abrir menú');
-                    menu.hidden = true;
-                    document.body.classList.remove('menu-open');
-                });
-            });
-        });
-    </script>
+    <script src="{% static 'js/navigation.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

@@ -16,11 +16,10 @@ def landing(request):
     )
 
     data_categorias = (
-        data_productos
-        .exclude(categoria_item__isnull=True)
-        .values_list('categoria_item__nombre', flat=True)
+        Categoria.objects
+        .filter(productoservicio__stock_activo=True, productoservicio__stock__gt=0)
         .distinct()
-        .order_by('categoria_item__nombre')
+        .order_by('nombre')
     )
 
     contexto = {
