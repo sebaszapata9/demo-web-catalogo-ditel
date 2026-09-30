@@ -48,3 +48,12 @@ La siguiente es una página web catálogo para la empresa FIREMED, que contendr�
 4. validar que el producto cargado se ve correctamente
 
 ## pasos a seguir
+
+
+## Sistema visual DITEL
+
+- Todos los estilos compartidos están en `catalogo/static/css/styles.css`, con una única definición de variables en `:root`.
+- Manrope se sirve desde `catalogo/static/fonts/manrope-variable.woff2`, con precarga en `base.html` y licencia SIL OFL incluida. No requiere conexión a Google Fonts.
+- Azul `#000861` y azul profundo `#040036`: marca, títulos y fondos. Naranja `#D74E09`: acentos. Naranja `#B94008`: botones con texto blanco. Verde `#146C43`: acciones principales de WhatsApp y disponibilidad.
+- El menú móvil se controla desde `catalogo/static/js/navigation.js` e incluye cierre con Escape y al regresar al tamaño de escritorio.
+- Después de desplegar los cambios, ejecutar `python manage.py collectstatic --noinput` para publicar CSS, JavaScript y tipografía mediante WhiteNoise.

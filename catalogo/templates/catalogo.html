@@ -17,6 +17,7 @@
         <div class="catalog-layout">
             <aside class="filters" aria-label="Filtros del catálogo">
                 <form method="get">
+                    {% if busqueda_actual %}<input type="hidden" name="q" value="{{ busqueda_actual }}">{% endif %}
                     <div class="filter-group">
                         <label class="filter-label" for="categoria">Categoría</label>
                         <select class="filter-select" id="categoria" name="categoria" onchange="this.form.submit()">
@@ -43,7 +44,7 @@
 
                     {% if categoria_actual or marca_actual or busqueda_actual %}
                         <div class="filter-group">
-                            <a class="btn btn-secondary" href="{% url 'catalogo' %}" style="width:100%;">Limpiar filtros</a>
+                            <a class="btn btn-secondary btn-block" href="{% url 'catalogo' %}">Limpiar filtros</a>
                         </div>
                     {% endif %}
                 </form>
@@ -59,7 +60,8 @@
                             <path d="m20 20-4-4"></path>
                         </svg>
                         <label class="visually-hidden" for="busqueda">Buscar productos</label>
-                        <input class="search-input" id="busqueda" name="q" type="search" value="{{ busqueda_actual }}" placeholder="Buscar por producto, marca o SKU...">
+                        <input class="search-input" id="busqueda" name="q" type="search" value="{{ busqueda_actual }}" placeholder="Producto, marca o SKU">
+                        <button class="btn btn-primary search-submit" type="submit">Buscar</button>
                     </form>
                     <span class="catalog-count">{{ data_productos|length }} producto{{ data_productos|length|pluralize }}{% if busqueda_actual %} encontrado{{ data_productos|length|pluralize }}{% endif %}</span>
                 </div>
@@ -72,7 +74,7 @@
                                     {% if producto.imagen %}
                                         <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
                                     {% else %}
-                                        <span class="product-image-placeholder">FIREMED</span>
+                                        <span class="product-image-placeholder">DITEL</span>
                                     {% endif %}
                                 </a>
 
