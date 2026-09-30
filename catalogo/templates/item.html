@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ item.nombre }} | FIREMED{% endblock %}
+{% block title %}{{ item.nombre }} | DITEL{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -23,7 +23,7 @@
                 {% if item.imagen %}
                     <img src="{{ item.imagen.url }}" alt="{{ item.nombre }}">
                 {% else %}
-                    <span class="product-image-placeholder">FIREMED</span>
+                    <span class="product-image-placeholder">DITEL</span>
                 {% endif %}
             </div>
 
@@ -105,7 +105,7 @@
                         {% if producto.imagen %}
                             <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
                         {% else %}
-                            <span class="product-image-placeholder">FIREMED</span>
+                            <span class="product-image-placeholder">DITEL</span>
                         {% endif %}
                     </a>
                     <div class="product-card-body">
